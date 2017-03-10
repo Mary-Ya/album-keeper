@@ -12,7 +12,7 @@ const Navbar = () => (
           <span className='icon-bar'></span>
         </button>
         <IndexLink to='/' className='navbar-brand'>
-          React Redux Recipe
+          Album keeper
         </IndexLink>
       </div>
 
@@ -20,12 +20,12 @@ const Navbar = () => (
         <ul className='nav navbar-nav'>
           <li>
             <IndexLink to='/' activeClassName='route--active'>
-              Home
+              Search
             </IndexLink>
           </li>
           <li>
-            <Link to='/about' activeClassName='route--active'>
-              About
+            <Link to='/saves' activeClassName='route--active'>
+              Saved
             </Link>
           </li>
         </ul>

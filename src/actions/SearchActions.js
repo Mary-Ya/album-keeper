@@ -2,15 +2,15 @@ import axios from 'axios';
 
 import * as types from '../constants/ActionTypes';
 
-function requestCountries() {
+function requestAlbums() {
   return {
-    type: types.REQUEST_COUNTRIES
+    type: types.REQUEST_RESULTS
   };
 }
 
-function receiveCountries(data) {
+function receiveAlbums(data) {
   return{
-    type: types.RECEIVE_COUNTRIES,
+    type: types.RECEIVE_RESULTS,
     payload: {
       data
     }
@@ -26,9 +26,9 @@ function receiveError(data) {
   };
 }
 
-export function fetchCountries(url) {
+export function fetchAlbums(url) {
   return function(dispatch) {
-    dispatch(requestCountries());
+    dispatch(requestAlbums());
     return axios({
       url: url,
       timeout: 20000,
@@ -36,7 +36,7 @@ export function fetchCountries(url) {
       responseType: 'json'
     })
     .then(function(response) {
-      dispatch(receiveCountries(response.data));
+      dispatch(receiveAlbums(response.data.releases));
     })
     .catch(function(response){
       dispatch(receiveError(response.data));
