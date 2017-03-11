@@ -26,6 +26,13 @@ function receiveError(data) {
   };
 }
 
+export function saveAlbum(album) {
+  return {
+    type: types.SAVE_ALBUM,
+    album
+  };
+}
+
 export function fetchAlbums(url) {
   return function(dispatch) {
     dispatch(requestAlbums());

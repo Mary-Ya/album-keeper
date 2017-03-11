@@ -7,8 +7,8 @@ export default class Albums extends Component {
     super(props);
   }
 
-  renderAlbum(album) {
-    return <Album key={album.id} album={album} />;
+  renderAlbum(album, controls) {
+    return <Album key={album.id} album={album} controls={controls} />;
   }
 
   renderPlaceholder(){
@@ -20,7 +20,7 @@ export default class Albums extends Component {
   }
 
   render() {
-    const {data, showStars} = this.props.searchResults;
+    const {data, controls} = this.props;
 
     return (
       <div className='tableContainer'>
@@ -38,7 +38,7 @@ export default class Albums extends Component {
             </tr>
           </thead>
           <tbody>
-            {data && data.length > 0 ? data.map(this.renderAlbum) : this.renderPlaceholder()}
+            {data && data.length > 0 ? data.map((album) => (this.renderAlbum(album, controls))) : this.renderPlaceholder()}
           </tbody>
         </table>
       </div>
@@ -47,7 +47,10 @@ export default class Albums extends Component {
 }
 
 Albums.propTypes = {
-  searchResults: PropTypes.object.isRequired,
-  showStars: PropTypes.bool,
-  actions: PropTypes.object.isRequired
+  data: PropTypes.array.isRequired,
+  controls: PropTypes.array
+};
+
+Albums.defaultProps = {
+  controls: []
 };

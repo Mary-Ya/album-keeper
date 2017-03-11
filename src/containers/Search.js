@@ -47,7 +47,11 @@ export class SearchContainer extends Component {
         </form>
         <div className="row">
           <div className="col-xs-12">
-          {searchResults.isLoading ? <Spinner /> : <Albums searchResults={searchResults} actions={actions} />}
+          {searchResults.isLoading ? <Spinner /> : <Albums
+            data={searchResults.data}
+            actions={actions}
+            controls={[{name: 'add', icon: 'star'}]}
+          />}
           </div>
         </div>
       </div>

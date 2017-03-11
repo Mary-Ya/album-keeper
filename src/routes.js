@@ -2,13 +2,13 @@ import React from 'react';
 import { IndexRoute, Route } from 'react-router';
 
 import App from './containers/App';
-import CountriesContainer from './containers/Search';
-import AboutContainer from './containers/About';
+import SearchContainer from './containers/Search';
+import SavedContainer from './containers/Saved';
 
 const routes = (
   <Route path='/' component={App}>
-    <IndexRoute component={CountriesContainer}/>
-    <Route path='saves' component={AboutContainer} />
+    <IndexRoute component={SearchContainer}/>
+    <Route path='saves' component={SavedContainer} />
   </Route>
 );
 
