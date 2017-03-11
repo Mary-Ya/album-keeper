@@ -8,8 +8,8 @@ export default class Album extends Component {
   renderControl(control, index, album) {
     return (
       <span key={`${control.name}-${album.id}`}
-            onClick={() => {console.log(`${control.name}-${album.id}`)}}
-            className={"glyphicon glyphicon-" + control.icon}
+            onClick={() => {control.action(album)}}
+            className={`glyphicon glyphicon-${control.icon} ${control.icon}`}
             aria-hidden="true"
       ></span>
     )
@@ -30,7 +30,7 @@ export default class Album extends Component {
         <td>{album.title}</td>
         <td>{album['artist-credit'].map((item, i) => (<span key={item.artist.id}>{item.artist.name}</span>))}</td>
         <td>{album.date}</td>
-        <td>{album.album}</td>
+        <td>{album.country}</td>
       </tr>
     );
   }

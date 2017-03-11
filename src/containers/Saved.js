@@ -14,6 +14,7 @@ export class SavedContainer extends Component {
 
   render() {
     const { savedAlbums, actions } = this.props;
+    const data = Object.keys(savedAlbums.data).map((key) => (savedAlbums.data[key]));
 
     return (
       <div>
@@ -21,13 +22,9 @@ export class SavedContainer extends Component {
           <div className="col-xs-12">
             {savedAlbums.isLoading ? <Spinner /> : <Albums
               showSum={false}
-              showControls={['remove']}
-              data={Object.keys(savedAlbums.data).map((item) => {
-                const newAlbum = {};
-                newAlbum[item.id] = item;
-                return item
-              })}
-              actions={actions} />}
+              controls={[{name: 'remove', icon: 'remove', action: actions.removeAlbum}]}
+              data={data}
+            />}
           </div>
         </div>
       </div>

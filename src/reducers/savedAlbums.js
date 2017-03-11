@@ -9,24 +9,26 @@ const INITIAL_STATE = {
 };
 
 export default function countriesReducer(state = INITIAL_STATE, action = null) {
-  const newState = Object.assign({}, state.data);
+  const newState = Object.assign({}, state);
+
 
   switch(action.type) {
-    case types.ADD_ALBUM:
-      newState[action.payload.album.id] = action.payload.album;
-      storage.setObject(config.localKey, newState);
-      return Object.assign({}, state, {isLoading: false, data: newState, error: false });
+    case types.SAVE_ALBUM:
+      newState.data[action.album.id] = action.album;
+      storage.setObject(config.localKey, newState.data);
+      return newState;
 
     case types.REMOVE_ALBUM:
-      delete newState[action.payload.id];
-      storage.setObject(config.localKey, newState);
-      return Object.assign({}, state, {isLoading: false, data: newState, error: false });
+      console.log('action', action);
+      delete newState.data[action.albumId];
+      storage.setObject(config.localKey, newState.data);
+      return newState;
 
     case types.RECEIVE_SAVES:
-      return Object.assign({}, state, {isLoading: false, data: action.payload.data, error: false });
+      return Object.assign({}, state, {isLoading: false, data: action.data, error: false });
 
     case types.REQUEST_SAVES:
-      return Object.assign({}, state, {isLoading: true, data: Object.assign(INITIAL_STATE), error: false });
+      return Object.assign({}, state, {isLoading: true, data: {data: Object.assign(INITIAL_STATE)}, error: false });
 
     default:
       return state;

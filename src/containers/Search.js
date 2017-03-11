@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Spinner from '../components/Spinner';
 import * as SearchActions from '../actions/SearchActions';
+import { saveAlbum } from '../actions/SavedActions';
 import Albums from '../components/Albums';
 
 export class SearchContainer extends Component {
@@ -27,7 +28,7 @@ export class SearchContainer extends Component {
   }
 
   render() {
-    const { searchResults, actions } = this.props;
+    const { searchResults, actions, saveAlbum } = this.props;
     
     return (
       <div>
@@ -49,8 +50,8 @@ export class SearchContainer extends Component {
           <div className="col-xs-12">
           {searchResults.isLoading ? <Spinner /> : <Albums
             data={searchResults.data}
-            actions={actions}
-            controls={[{name: 'add', icon: 'star'}]}
+            controls={[{name: 'add', icon: 'star', action: saveAlbum}]}
+            showSum={true}
           />}
           </div>
         </div>
@@ -76,7 +77,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(SearchActions, dispatch)
+    actions: bindActionCreators(SearchActions, dispatch),
+    saveAlbum: bindActionCreators(saveAlbum, dispatch)
   };
 }
 

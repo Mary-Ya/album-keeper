@@ -2,7 +2,7 @@ export const RECEIVE_ERROR = 'RECEIVE_ERROR';
 export const RECEIVE_RESULTS = 'RECEIVE_RESULTS';
 export const REQUEST_RESULTS = 'REQUEST_RESULTS';
 
-export const ADD_ALBUM = 'ADD_ALBUM';
+export const SAVE_ALBUM = 'SAVE_ALBUM';
 export const REMOVE_ALBUM = 'REMOVE_ALBUM';
 
 export const RECEIVE_SAVES = 'RECEIVE_SAVES';
