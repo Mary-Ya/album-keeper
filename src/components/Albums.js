@@ -46,7 +46,7 @@ export default class Albums extends Component {
           </tr>
           </thead>
           <tbody>
-          { this.renderRows(data, controls) }
+            { this.renderRows(data, controls) }
           </tbody>
         </table>
       </div>

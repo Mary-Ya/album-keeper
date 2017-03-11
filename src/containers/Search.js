@@ -28,7 +28,7 @@ export class SearchContainer extends Component {
   }
 
   render() {
-    const { searchResults, actions, saveAlbum } = this.props;
+    const { searchResults, saveAlbum } = this.props;
     
     return (
       <div>
@@ -50,7 +50,7 @@ export class SearchContainer extends Component {
           <div className="col-xs-12">
           {searchResults.isLoading ? <Spinner /> : <Albums
             data={searchResults.data}
-            controls={[{name: 'add', icon: 'star', action: saveAlbum}]}
+            controls={ [{name: 'add', icon: 'star', action: saveAlbum}] }
             showSum={true}
           />}
           </div>

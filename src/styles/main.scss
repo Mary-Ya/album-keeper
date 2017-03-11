@@ -1,14 +1,13 @@
 @import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../../node_modules/bootstrap/dist/css/bootstrap-theme.min.css';
 
-@import url(https://fonts.googleapis.com/css?family=Lato);
+@import './album.scss';
 
 body {
   background-color: white;
   color: black;
   display: flex;
   justify-content: center;
-  font-family: 'Lato', sans-serif;
 }
 
 h1 {
