@@ -1,11 +1,19 @@
+$color-red: #96281b;
+
 .star {
-  &:hover {
-    color: #6633ee;
+  &:hover, &__saved {
+    color: $color-red;
   }
 }
 
 .remove {
   &:hover {
-    color: #ee3366;
+    color: $color-red;
+  }
+}
+
+.star, .remove {
+  &__clocked {
+    color: $color-red;
   }
 }

@@ -7,16 +7,25 @@ import * as SearchActions from '../actions/SearchActions';
 import { saveAlbum } from '../actions/SavedActions';
 import Albums from '../components/Albums';
 
+import url from '../services/url';
+
 export class SearchContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {query: ''};
+
+    const params = url.getQuery();
+    this.state = {query: params};
+
+    if(params && params.length > 0) {
+      this.props.actions.fetchAlbums(params);
+    }
 
     this.handleChange = this.handleChange.bind(this);
     this.searchAlbums = this.searchAlbums.bind(this);
   }
 
   handleChange(event) {
+    url.setQuery(event.target.value);
     this.setState({query: event.target.value});
   }
 
@@ -24,7 +33,7 @@ export class SearchContainer extends Component {
     event.preventDefault();
 
     // @todo: sanitize input
-    this.props.actions.fetchAlbums(`http://musicbrainz.org/ws/2/release/?query=${this.state.query}&fmt=json`);
+    this.props.actions.fetchAlbums(this.state.query);
   }
 
   render() {

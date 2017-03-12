@@ -25,11 +25,11 @@ function receiveError(data) {
   };
 }
 
-export function fetchAlbums(url) {
+export function fetchAlbums(query) {
   return function(dispatch) {
     dispatch(requestAlbums());
     return axios({
-      url: url,
+      url: `http://musicbrainz.org/ws/2/release/?query=${query}&fmt=json`,
       timeout: 20000,
       method: 'get',
       responseType: 'json'
